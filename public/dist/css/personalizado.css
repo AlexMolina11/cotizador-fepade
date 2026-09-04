@@ -1,0 +1,2947 @@
+
+:root {
+    --primary-red: #B0291C;
+    --primary-gold: #CC8E00;
+    --primary-green: #0ce98b8c;
+    --background-bk-green: radial-gradient(circle at 100% 70.9666633605957%, rgba(12, 233, 139, 0.55) 0%, 10.5%, rgba(12, 233, 139, 0) 35%), radial-gradient(circle at 52.266674041748054% 38.43336423238119%, rgba(0, 0, 0, 0.99) 0%, 25%, rgba(0, 0, 0, 0) 50%), radial-gradient(circle at 0% 66.70000076293945%, rgba(12, 233, 139, 0.55) 0%, 11.4%, rgba(12, 233, 139, 0) 38%), radial-gradient(circle at 48.9013671875% 49.521484375%, #000000 0%, 100%, rgba(0, 0, 0, 0) 100%);
+    --white: #ffffff;
+    --black: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --shadow-glow: 0 0 40px rgba(12, 233, 139, 0.15);
+    --card-hover: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--background-bk-green);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Enhanced animated background elements */
+.bg-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(12, 233, 139, 0.3), rgba(204, 142, 0, 0.2));
+    filter: blur(1px);
+    animation: float 12s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    right: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 100px;
+    height: 100px;
+    bottom: 15%;
+    left: 8%;
+    animation-delay: 3s;
+}
+
+.orb-3 {
+    width: 80px;
+    height: 80px;
+    top: 70%;
+    right: 5%;
+    animation-delay: 6s;
+}
+
+.orb-4 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    left: 15%;
+    animation-delay: 9s;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.4;
+    }
+    25% { 
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-10px) translateX(-25px) scale(0.9);
+        opacity: 0.5;
+    }
+    75% { 
+        transform: translateY(20px) translateX(15px) scale(1.05);
+        opacity: 0.7;
+    }
+}
+
+/* Header Navigation */
+.header-nav {
+    position: relative;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--glass-border);
+    padding: 1rem 0;
+    box-shadow: var(--shadow-glow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-header {
+    height: 45px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+    font-size: 0.95rem;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.welcome-section {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.welcome-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), var(--primary-gold), transparent);
+    animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.welcome-title {
+    color: var(--text-primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.025em;
+}
+
+.welcome-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Menu Grid */
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.menu-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 0;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-glow);
+    text-decoration: none;
+    display: block;
+    group: hover;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: var(--card-hover);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        var(--shadow-glow),
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(12, 233, 139, 0.3);
+    text-decoration: none;
+}
+
+.menu-card-content {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.menu-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.menu-icon img {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+}
+
+.menu-card:hover .menu-icon img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.menu-text {
+    flex: 1;
+}
+
+.menu-title {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease;
+}
+
+.menu-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.menu-card:hover .menu-title {
+    color: var(--primary-green);
+}
+
+.menu-card:hover .menu-description {
+    color: var(--text-primary);
+}
+
+/* Color themes for different modules */
+.menu-card.bg-black { --module-color: #000000; }
+.menu-card.bg-navy { --module-color: #001f3f; }
+.menu-card.bg-blue { --module-color: #0074D9; }
+.menu-card.bg-light-blue { --module-color: #7FDBFF; }
+.menu-card.bg-teal { --module-color: #39CCCC; }
+.menu-card.bg-olive { --module-color: #3D9970; }
+.menu-card.bg-purple { --module-color: #B10DC9; }
+.menu-card.bg-red { --module-color: #FF4136; }
+.menu-card.bg-orange { --module-color: #FF851B; }
+
+.menu-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--module-color, transparent) 0%, transparent 50%);
+    opacity: 0.05;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.menu-card:hover::after {
+    opacity: 0.15;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .welcome-card {
+        padding: 2rem;
+    }
+
+    .welcome-title {
+        font-size: 1.8rem;
+    }
+
+    .menu-card-content {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .menu-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .menu-icon img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-title {
+        font-size: 1.2rem;
+    }
+
+    .logout-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 1.6rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+
+    .menu-card-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .menu-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .menu-icon img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for accessibility */
+.menu-card:focus,
+.logout-btn:focus {
+    outline: 3px solid var(--primary-green);
+    outline-offset: 4px;
+}
+
+
+/* ===== MEJORAS DE DISEÑO PARA HEADER ===== */
+
+/* 1. MEJORAS DEL LOGO PRINCIPAL */
+.main-header .logo {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8));
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(12, 233, 139, 0.3);
+}
+
+.main-header .logo:hover {
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-gold));
+    transform: scale(1.02);
+    box-shadow: 0 4px 30px rgba(12, 233, 139, 0.5);
+}
+
+.main-header .logo img {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.main-header .logo:hover img {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    transform: scale(1.05);
+}
+
+/* 2. MEJORAS DE LA BARRA DE NAVEGACIÓN */
+.main-header .navbar {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow);
+}
+
+/* 3. BOTÓN DEL SIDEBAR CON EFECTO HOVER */
+.main-header .sidebar-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 6px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-header .sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 4. MEJORAS DEL MENÚ DE USUARIO */
+.navbar-nav > .user-menu > .dropdown-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav > .user-menu > .dropdown-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 5. IMAGEN DE USUARIO CON EFECTO */
+.navbar-nav .user-image {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav > .user-menu:hover .user-image {
+    border-color: var(--primary-green);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(12, 233, 139, 0.4);
+}
+
+/* 6. NOMBRE DE USUARIO CON EFECTO DE BRILLO */
+.navbar-nav > .user-menu .hidden-xs {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav > .user-menu:hover .hidden-xs {
+    color: var(--primary-green);
+    text-shadow: 0 0 10px rgba(12, 233, 139, 0.6);
+}
+
+/* 7. MEJORAS DEL DROPDOWN DE USUARIO */
+.dropdown-menu {
+    position: relative!important;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    border-radius: 15px;
+    box-shadow: var(--shadow-glow), 0 10px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    animation: dropdownSlide 0.3s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dropdown-menu .user-header {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8));
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu .user-header .img-circle {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu .user-header p {
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+}
+
+/* 8. BOTONES DEL FOOTER DEL DROPDOWN */
+.user-footer .btn {
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-footer .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.user-footer .btn-default:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--primary-green);
+}
+
+/* 9. MEJORAS DEL MODAL CAMBIAR CLAVE */
+.modal-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-glow), 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8));
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px 18px 0 0;
+}
+
+.modal-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.modal-body {
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+}
+
+.modal-body .form-control {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.modal-body .form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 20px rgba(12, 233, 139, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.modal-footer {
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--glass-border);
+    border-radius: 0 0 18px 18px;
+}
+
+.modal-footer .btn {
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.modal-footer .btn-primary {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8));
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-footer .btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-green));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(12, 233, 139, 0.4);
+}
+
+.modal-footer .btn-default {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.modal-footer .btn-default:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 10. MEJORAS DEL SIDEBAR */
+.main-sidebar {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-right: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-glow);
+}
+
+.sidebar-menu > li > a {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    /*margin: 2px 8px;*/
+}
+
+.sidebar-menu > li > a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-green);
+    transform: translateX(0.5px);
+    box-shadow: 0 4px 15px rgba(12, 233, 139, 0.2);
+}
+
+.sidebar-menu > li.active > a {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8));
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(12, 233, 139, 0.3);
+}
+
+/* 11. ICONOS DEL SIDEBAR CON MEJORES EFECTOS */
+.sidebar-menu img {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.sidebar-menu > li:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(12, 233, 139, 0.5));
+}
+
+/* 12. SUBMENU CON EFECTOS */
+.treeview-menu > li > a {
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 1px 4px;
+}
+
+.treeview-menu > li > a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--primary-green);
+    transform: translateX(3px);
+    padding-left: 25px;
+}
+
+/* 13. ANIMACIONES DE ENTRADA */
+.main-header {
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-sidebar {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 14. MEJORAS RESPONSIVAS ADICIONALES */
+@media (max-width: 768px) {
+    /*.main-header .sidebar-toggle {
+        margin: 4px;
+        padding: 6px 10px;
+    }*/
+    
+    /*.navbar-nav > .user-menu > .dropdown-toggle {
+        padding: 3px 10px;
+        margin: 4px;
+    }*/
+    
+    .main-header .logo {
+        transform: none;
+    }
+}
+
+/* 15. MODO OSCURO MEJORADO */
+@media (prefers-color-scheme: dark) {
+    /*.main-header .navbar,
+    .main-header .logo {
+        box-shadow: 
+            var(--shadow-glow),
+            0 4px 20px rgba(0, 0, 0, 0.6);
+    }*/
+}
+
+/* 16. REDUCIR MOVIMIENTO PARA ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+    .main-header .logo,
+    .navbar-nav > .user-menu > .dropdown-toggle,
+    .sidebar-menu > li > a,
+    .main-header .sidebar-toggle,
+    .dropdown-menu {
+        animation: none;
+        transition: none;
+    }
+    
+    .main-header .logo:hover,
+    .navbar-nav > .user-menu:hover .user-image {
+        transform: none;
+        margin-top:0px!important;
+    }
+}
+
+
+
+
+
+
+
+/* ===== MEJORAS DE DISEÑO PARA PÁGINA CATÁLOGOS ===== */
+
+/* 1. MEJORAS DEL CONTENT-WRAPPER */
+.content-wrapper {
+    background: var(--background-bk-green);
+    min-height: 100vh;
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.content-wrapper::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(12, 233, 139, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(204, 142, 0, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. MEJORAS DEL CONTENT-HEADER */
+.content-header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--glass-border);
+    /*border-radius: 0 0 25px 25px;*/
+    margin-bottom: 2rem;
+    /*padding: 2rem;*/
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    z-index: 10;
+    animation: slideDown 0.6s ease-out;
+}
+
+.content-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), var(--primary-gold), transparent);
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. MEJORAS DEL BREADCRUMB */
+.breadcrumb {
+    /*background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 12px 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;*/
+    margin-top: -10px!important;
+    background-color: transparent!important;
+}
+
+.breadcrumb > li {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.breadcrumb > li + li:before {
+    content: "›";
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 0 8px;
+}
+
+.breadcrumb > li > a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.breadcrumb > li > a:hover {
+    color: var(--primary-green);
+    text-shadow: 0 0 10px rgba(12, 233, 139, 0.5);
+}
+
+.breadcrumb > .active {
+    color: var(--primary-green);
+    font-weight: 700;
+}
+
+/* 4. MEJORAS DEL CONTENIDO PRINCIPAL */
+.content {
+    position: relative;
+    z-index: 10;
+    padding: 0 2rem 2rem;
+}
+
+.content .row {
+    margin: 0;
+}
+
+/* 5. MEJORAS DEL PANEL PRINCIPAL */
+.panel-primary {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.8s ease-out;
+}
+
+.panel-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--primary-green), 
+        var(--primary-gold), 
+        var(--primary-green)
+    );
+    border-radius: 25px 25px 0 0;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 6. MEJORAS DEL TÍTULO DE BIENVENIDA */
+.panel-primary h4 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* 7. MEJORAS DE LA LISTA DE CATÁLOGOS */
+.list-group {
+    background: transparent;
+    border: none;
+    margin-top: 2rem;
+}
+
+.list-group-item {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 15px !important;
+    margin-bottom: 1rem !important;
+    padding: 1.5rem !important;
+    transition: all 0.4s ease !important;
+    color: var(--text-primary) !important;
+    font-size: 1.1rem !important;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Animación escalonada para cada item */
+.list-group-item:nth-child(1) { animation-delay: 0.1s; }
+.list-group-item:nth-child(2) { animation-delay: 0.2s; }
+.list-group-item:nth-child(3) { animation-delay: 0.3s; }
+.list-group-item:nth-child(4) { animation-delay: 0.4s; }
+.list-group-item:nth-child(5) { animation-delay: 0.5s; }
+.list-group-item:nth-child(6) { animation-delay: 0.6s; }
+.list-group-item:nth-child(7) { animation-delay: 0.7s; }
+.list-group-item:nth-child(8) { animation-delay: 0.8s; }
+.list-group-item:nth-child(9) { animation-delay: 0.9s; }
+.list-group-item:nth-child(10) { animation-delay: 1.0s; }
+.list-group-item:nth-child(11) { animation-delay: 1.1s; }
+.list-group-item:nth-child(12) { animation-delay: 1.2s; }
+.list-group-item:nth-child(13) { animation-delay: 1.3s; }
+.list-group-item:nth-child(14) { animation-delay: 1.4s; }
+.list-group-item:nth-child(15) { animation-delay: 1.5s; }
+.list-group-item:nth-child(16) { animation-delay: 1.6s; }
+.list-group-item:nth-child(17) { animation-delay: 1.7s; }
+.list-group-item:nth-child(18) { animation-delay: 1.8s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 8. EFECTOS HOVER PARA LOS ITEMS DE LA LISTA */
+.list-group-item:hover {
+    background: var(--card-hover) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    transform: translateX(5px) scale(1.02) !important;
+    box-shadow: 
+        var(--shadow-glow),
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(12, 233, 139, 0.2) !important;
+}
+
+.list-group-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-green), var(--primary-gold));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    border-radius: 15px 0 0 15px;
+}
+
+.list-group-item:hover::before {
+    transform: scaleY(1);
+}
+
+/* 9. MEJORAS DE LOS ENLACES */
+.list-group-item a {
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.list-group-item:hover a {
+    color: var(--primary-green) !important;
+    text-shadow: 0 0 10px rgba(12, 233, 139, 0.4);
+}
+
+/* 10. MEJORAS DE LOS ICONOS */
+.list-group-item .fa {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.list-group-item:hover .fa:not(.fa-long-arrow-right) {
+    color: var(--primary-green);
+    transform: scale(1.2);
+    filter: drop-shadow(0 4px 8px rgba(12, 233, 139, 0.4));
+}
+
+/* 11. MEJORAS DE LA FLECHA */
+.list-group-item .fa-long-arrow-right {
+    color: var(--text-muted);
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover .fa-long-arrow-right {
+    color: var(--primary-gold);
+    transform: translateX(5px);
+}
+
+/* 12. MEJORAS DE LA DESCRIPCIÓN */
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Separar el enlace de la descripción */
+.list-group-item::after {
+    content: attr(data-description);
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 0.95rem;
+    flex: 1;
+    text-align: right;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover::after {
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+/* 13. LAYOUT MEJORADO PARA CADA ITEM */
+.list-group-item {
+    /*display: grid;*/
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* 14. EFECTOS DE PARTÍCULAS FLOTANTES */
+.panel-primary::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(12, 233, 139, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 20%;
+    right: 10%;
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.6;
+    }
+}
+
+/* 15. MEJORAS RESPONSIVAS */
+@media (max-width: 768px) {
+    .content {
+        padding: 0 1rem 1rem;
+    }
+    
+    .panel-primary {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .panel-primary h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .list-group-item {
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        flex-direction: column;
+        align-items: flex-start;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .list-group-item a {
+        margin-bottom: 0.5rem;
+    }
+    
+    .content-header {
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-primary h4 {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+    
+    .list-group-item {
+        border-radius: 12px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .breadcrumb {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 16. MEJORAS DE ACCESIBILIDAD */
+.list-group-item:focus-within {
+    outline: 3px solid var(--primary-green);
+    outline-offset: 4px;
+}
+
+.list-group-item a:focus {
+    outline: none;
+    color: var(--primary-green) !important;
+    text-shadow: 0 0 10px rgba(12, 233, 139, 0.6);
+}
+
+/* 17. MODO OSCURO MEJORADO */
+@media (prefers-color-scheme: dark) {
+    .content-wrapper {
+        background: var(--background-bk-green);
+    }
+    
+    .list-group-item {
+        box-shadow: 
+            var(--shadow-glow),
+            0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+}
+
+/* 18. REDUCIR MOVIMIENTO PARA ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+    .content-wrapper,
+    .content-header,
+    .panel-primary,
+    .list-group-item {
+        animation: none;
+    }
+    
+    .list-group-item:hover {
+        transform: none !important;
+    }
+    
+    .list-group-item .fa:hover,
+    .list-group-item:hover .fa-long-arrow-right {
+        transform: none;
+    }
+    
+    .content-header::before,
+    .panel-primary::after {
+        animation: none;
+    }
+}
+
+/* 19. MEJORAS ADICIONALES PARA ALTO CONTRASTE */
+@media (prefers-contrast: high) {
+    .list-group-item {
+        border: 3px solid var(--primary-green) !important;
+    }
+    
+    .list-group-item a {
+        font-weight: 900 !important;
+    }
+    
+    .breadcrumb {
+        border: 2px solid var(--primary-green);
+    }
+}
+
+/* 20. EFECTOS DE CARGA PROGRESIVA */
+.content-wrapper.loading .list-group-item {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+.content-wrapper.loaded .list-group-item {
+    animation-play-state: running;
+}
+
+/* ===== MEJORAS ESPECÍFICAS PARA PÁGINA OFERTA.PHP ===== */
+
+/* 1. MEJORAS DEL BOX PRINCIPAL */
+.box {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 25px !important;
+    box-shadow: var(--shadow-glow) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    animation: slideUp 0.8s ease-out !important;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--primary-green), 
+        var(--primary-gold), 
+        var(--primary-green)
+    );
+    border-radius: 25px 25px 0 0;
+    z-index: 1;
+}
+
+/* 2. MEJORAS DEL HEADER DEL BOX */
+.box-header {
+    background: linear-gradient(135deg, 
+        rgba(12, 233, 139, 0.1), 
+        rgba(204, 142, 0, 0.1)
+    ) !important;
+    border-bottom: 2px solid var(--glass-border) !important;
+    border-radius: 23px 23px 0 0 !important;
+    padding: 1.5rem 2rem !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.box-title {
+    color: var(--text-primary) !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    margin: 0 !important;
+}
+
+.box-tools {
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+/* 3. MEJORAS DEL BOTÓN AGREGAR */
+#btnagregar {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+    color: var(--white) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(12, 233, 139, 0.3) !important;
+}
+
+#btnagregar:hover {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-green)) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(12, 233, 139, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#btnagregar .fa {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#btnagregar:hover .fa {
+    transform: rotate(90deg);
+}
+
+/* 4. MEJORAS DEL PANEL BODY */
+.panel-body {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0 0 23px 23px !important;
+    padding: 2rem !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 5. MEJORAS DE LOS FILTROS DE BÚSQUEDA */
+.panel-body .row:first-child {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.panel-body .row:first-child::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+    animation: shimmer 3s linear infinite;
+}
+
+/* 6. MEJORAS DE LOS FORM-GROUPS */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* 7. MEJORAS DE LOS INPUTS */
+.form-control {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 20px rgba(12, 233, 139, 0.3) !important;
+    color: var(--text-primary) !important;
+    transform: scale(1.02) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+    font-weight: 400 !important;
+}
+
+/* 8. MEJORAS DE LOS SELECT */
+.selectpicker,
+.select-picker {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+}
+
+/* Bootstrap Select mejoras */
+.bootstrap-select .dropdown-toggle {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select .dropdown-toggle:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 15px rgba(12, 233, 139, 0.2) !important;
+}
+
+.bootstrap-select .dropdown-menu {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 15px !important;
+    box-shadow: var(--shadow-glow), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+.bootstrap-select .dropdown-menu li a {
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease !important;
+    padding: 0.5rem 1rem !important;
+    background: transparent !important;
+}
+
+.bootstrap-select .dropdown-menu li a:hover,
+.bootstrap-select .dropdown-menu li.active a {
+    background: rgba(12, 233, 139, 0.2) !important;
+    color: var(--primary-green) !important;
+}
+
+.bootstrap-select .dropdown-menu li.selected a {
+    background: rgba(12, 233, 139, 0.3) !important;
+    color: var(--primary-green) !important;
+    font-weight: 600 !important;
+}
+
+/* Corrección específica para dropdowns desplegados */
+.bootstrap-select.open .dropdown-menu {
+    display: block !important;
+}
+
+.bootstrap-select .dropdown-menu .text {
+    color: var(--text-primary) !important;
+}
+
+/* Estilo para el texto seleccionado */
+.bootstrap-select .filter-option {
+    color: var(--text-primary) !important;
+}
+
+.bootstrap-select .filter-option-inner-inner {
+    color: var(--text-primary) !important;
+}
+
+/* 9. MEJORAS DE LOS TEXTAREAS */
+textarea.form-control {
+    min-height: 120px !important;
+    resize: vertical !important;
+    font-family: inherit !important;
+    line-height: 1.5 !important;
+}
+
+/* 10. MEJORAS DE LOS TÍTULOS DE SECCIÓN */
+.form-group h2 {
+    color: var(--text-primary) !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    margin-bottom: 1rem !important;
+    position: relative !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.form-group h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-gold));
+    border-radius: 2px;
+}
+
+/* 11. MEJORAS DE LOS TÍTULOS H4 (WELCOME-CARD) */
+.form-group h4.welcome-card {
+    background: linear-gradient(135deg, 
+        var(--primary-green), 
+        rgba(12, 233, 139, 0.8)
+    ) !important;
+    color: var(--white) !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 15px !important;
+    padding: 1rem 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 8px 25px rgba(12, 233, 139, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.form-group h4.welcome-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+    animation: shimmer 4s linear infinite;
+}
+
+.form-group h4.welcome-card #leyenda {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 400 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 12. MEJORAS DE LOS CAMPOS OBLIGATORIOS */
+.obligado {
+    color: var(--primary-red) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    animation: pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* 13. MEJORAS DE LOS BOTONES PRINCIPALES */
+#btnGuardar {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+    color: var(--white) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(12, 233, 139, 0.3) !important;
+    margin-right: 1rem !important;
+}
+
+#btnGuardar:hover {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-green)) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(12, 233, 139, 0.5) !important;
+}
+
+#btnCancelar {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+#btnCancelar:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 14. MEJORAS DE LOS BOTONES DE BÚSQUEDA */
+.btn-group .btn {
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.5rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    margin-right: 0.5rem !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--white) !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-green)) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(12, 233, 139, 0.4) !important;
+}
+
+.btn-danger {
+    background: rgba(255, 65, 54, 0.8) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--white) !important;
+}
+
+.btn-danger:hover {
+    background: rgba(255, 65, 54, 1) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 65, 54, 0.4) !important;
+}
+
+/* 15. MEJORAS DE LA TABLA */
+#tbllistado {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(15px) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-glow) !important;
+    width: 100%!important;
+}
+
+#tbllistado thead th {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8)) !important;
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    padding: 1rem 0.75rem !important;
+}
+
+#tbllistado tbody td {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: black!important;
+    border: 1px solid var(--glass-border) !important;
+    padding: 0.75rem !important;
+    transition: all 0.3s ease !important;
+    text-shadow: none!important;
+}
+
+#tbllistado tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.01) !important;
+}
+
+#tbllistado tfoot th {
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+    border: none !important;
+    padding: 0.75rem !important;
+}
+
+/* 16. MEJORAS DE LOS INPUT-GROUP */
+.input-group {
+    position: relative;
+}
+
+.input-group-addon {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-right: none !important;
+    border-radius: 12px 0 0 12px !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.input-group .form-control {
+    border-left: none !important;
+    border-radius: 0 12px 12px 0 !important;
+}
+
+/* 17. MEJORAS DE EFECTOS HOVER EN ICONOS */
+.fa {
+    transition: all 0.3s ease !important;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.btn:hover .fa {
+    transform: scale(1.1) !important;
+}
+
+/* 18. ANIMACIONES DE ENTRADA PARA EL FORMULARIO */
+#formularioregistros {
+    animation: slideUp 0.6s ease-out !important;
+}
+
+#listadoregistros {
+    animation: fadeIn 0.6s ease-out !important;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 19. MEJORAS RESPONSIVAS ESPECÍFICAS */
+@media (max-width: 768px) {
+    .box {
+        margin: 1rem !important;
+        border-radius: 20px !important;
+    }
+    
+    .box-header {
+        padding: 1rem !important;
+        border-radius: 18px 18px 0 0 !important;
+    }
+    
+    .box-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .panel-body {
+        padding: 1rem !important;
+    }
+    
+    .form-group h4.welcome-card {
+        font-size: 1rem !important;
+        padding: 0.8rem 1rem !important;
+    }
+    
+    #btnGuardar,
+    #btnCancelar {
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* 23. CORRECCIONES ESPECÍFICAS PARA DATATABLES */
+
+/* Estilo base para DataTables */
+.dataTables_wrapper {
+    color: var(--text-primary) !important;
+    background: transparent !important;
+}
+
+/* Info del DataTable */
+.dataTables_info {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    background: var(--glass-bg) !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--glass-border) !important;
+    backdrop-filter: blur(10px) !important;
+    margin: 1rem 0 !important;
+}
+
+/* Paginación del DataTable */
+.dataTables_paginate {
+    color: var(--text-primary) !important;
+    margin: 1rem 0 !important;
+}
+
+.dataTables_paginate .paginate_button {
+    background: var(--glass-bg) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 0.75rem !important;
+    margin: 0 0.25rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: rgba(12, 233, 139, 0.2) !important;
+    color: var(--primary-green) !important;
+    border-color: var(--primary-green) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(12, 233, 139, 0.3) !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8)) !important;
+    color: var(--white) !important;
+    border-color: var(--primary-green) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(12, 233, 139, 0.4) !important;
+}
+
+.dataTables_paginate .paginate_button.disabled {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-muted) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    cursor: not-allowed !important;
+}
+
+.dataTables_paginate .paginate_button.disabled:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-muted) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Botones de acción del DataTable (Copy, Excel, PDF, Print) */
+.dt-buttons {
+    margin-bottom: 1rem !important;
+}
+
+.dt-button {
+    background: var(--glass-bg) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dt-button:hover {
+    background: rgba(12, 233, 139, 0.2) !important;
+    color: var(--primary-green) !important;
+    border-color: var(--primary-green) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(12, 233, 139, 0.3) !important;
+}
+
+/* Buscador del DataTable */
+.dataTables_filter {
+    margin: 1rem 0 !important;
+}
+
+.dataTables_filter label {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dataTables_filter input {
+    background: var(--glass-bg) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 1rem !important;
+    backdrop-filter: blur(10px) !important;
+    margin-left: 0.5rem !important;
+}
+
+.dataTables_filter input:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 15px rgba(12, 233, 139, 0.3) !important;
+    outline: none !important;
+}
+
+/* Longitud de página del DataTable */
+.dataTables_length {
+    margin: 1rem 0 !important;
+}
+
+.dataTables_length label {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dataTables_length select {
+    background: var(--glass-bg) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 8px !important;
+    padding: 0.25rem 0.5rem !important;
+    backdrop-filter: blur(10px) !important;
+    margin: 0 0.5rem !important;
+}
+
+/* Mensaje cuando no hay datos */
+.dataTables_empty {
+    color: var(--text-secondary) !important;
+    font-style: italic !important;
+    text-align: center !important;
+    padding: 2rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Corrección para el wrapper completo */
+.dataTables_wrapper .row {
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+}
+
+.dataTables_wrapper .row > div {
+    color: var(--text-primary) !important;
+}
+
+/* 24. CORRECCIONES ADICIONALES PARA BOOTSTRAP SELECT */
+
+/* Para asegurar que el texto del dropdown sea visible */
+.bootstrap-select button {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    color: var(--text-primary) !important;
+}
+
+.bootstrap-select button .filter-option {
+    color: var(--text-primary) !important;
+}
+
+.bootstrap-select button .caret {
+    border-top-color: var(--text-primary) !important;
+}
+
+/* Dropdown abierto */
+/*.bootstrap-select.open .dropdown-menu {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+.bootstrap-select .dropdown-menu > li > a {
+    color: var(--text-primary) !important;
+    background: transparent !important;
+}
+
+.bootstrap-select .dropdown-menu > li > a:hover,
+.bootstrap-select .dropdown-menu > li > a:focus {
+    color: var(--primary-green) !important;
+    background: rgba(12, 233, 139, 0.2) !important;
+}
+
+.bootstrap-select .dropdown-menu > li.active > a,
+.bootstrap-select .dropdown-menu > li.selected > a {
+    color: var(--primary-green) !important;
+    background: rgba(12, 233, 139, 0.3) !important;
+}*/
+
+/* Para select normales también */
+/*select.form-control option {
+    background: var(--black) !important;
+    color: var(--text-primary) !important;
+}
+
+/* 25. ESTILOS PARA MEJORAR CONTRASTE */
+/*.text-muted,
+.help-block {
+    color: var(--text-secondary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}*/
+
+/* Asegurar que todos los textos sean visibles */
+/** {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}*/
+
+/* Específico para elementos que pueden tener problemas de visibilidad */
+small, .small {
+    color: var(--text-secondary) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+label, .control-label {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 26. RESPONSIVO MEJORADO PARA DATATABLES */
+@media (max-width: 768px) {
+    .dataTables_info,
+    .dataTables_paginate {
+        text-align: center !important;
+        margin: 0.5rem 0 !important;
+    }
+    
+    .dt-buttons {
+        text-align: center !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .dt-button {
+        margin: 0.25rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* 21. MEJORAS PARA MODO OSCURO */
+@media (prefers-color-scheme: dark) {
+    .box {
+        box-shadow: 
+            var(--shadow-glow),
+            0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    }
+}
+
+/* 22. REDUCIR MOVIMIENTO PARA ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+    .box,
+    #formularioregistros,
+    #listadoregistros,
+    .form-control,
+    .btn,
+    .obligado {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .btn:hover,
+    .form-control:focus {
+        transform: none !important;
+    }
+}
+
+.dropdown-menu {
+    background-color: #001f3f!important;
+}
+
+
+/* ===== CORRECCIONES ESPECÍFICAS PARA SELECT DROPDOWNS ===== */
+
+/* 1. CORRECCIONES PARA BOOTSTRAP SELECT */
+.bootstrap-select {
+    width: 100% !important;
+}
+
+.bootstrap-select .dropdown-toggle {
+    background: rgba(0, 31, 63, 0.9) !important; /* Fondo más sólido */
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important; /* Texto blanco sólido */
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    padding: 8px 12px !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important; /* Sombra para mejor legibilidad */
+    min-height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Texto del botón select */
+.bootstrap-select .filter-option {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.bootstrap-select .filter-option-inner {
+    color: #ffffff !important;
+}
+
+.bootstrap-select .filter-option-inner-inner {
+    color: #ffffff !important;
+}
+
+/* Placeholder text */
+.bootstrap-select .bs-placeholder .filter-option-inner-inner {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-style: italic !important;
+}
+
+/* Caret (flecha) */
+.bootstrap-select .caret {
+    border-top: 4px solid #ffffff !important;
+    margin-left: 8px !important;
+}
+
+/* Estados hover y focus */
+.bootstrap-select .dropdown-toggle:hover,
+.bootstrap-select .dropdown-toggle:focus {
+    background: rgba(12, 233, 139, 0.3) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 15px rgba(12, 233, 139, 0.4) !important;
+    color: #ffffff !important;
+}
+
+/* Cuando está abierto */
+.bootstrap-select.open .dropdown-toggle {
+    background: rgba(12, 233, 139, 0.4) !important;
+    border-color: var(--primary-green) !important;
+    color: #ffffff !important;
+}
+
+/* 2. CORRECCIONES PARA EL DROPDOWN MENU */
+.bootstrap-select .dropdown-menu {
+    background: rgba(0, 31, 63, 0.95) !important; /* Fondo más sólido */
+    backdrop-filter: blur(25px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(12, 233, 139, 0.2) !important;
+    /*max-height: 250px !important;*/
+    overflow-y: auto !important;
+    margin-top: 4px !important;
+    /*z-index: 1050 !important;*/
+    padding: 8px 0 !important;
+}
+
+/* Items del dropdown */
+.bootstrap-select .dropdown-menu li a {
+    color: #ffffff !important;
+    background: transparent !important;
+    padding: 10px 16px !important;
+    transition: all 0.2s ease !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+    border: none !important;
+    text-decoration: none !important;
+}
+
+/* Hover en items */
+.bootstrap-select .dropdown-menu li a:hover,
+.bootstrap-select .dropdown-menu li a:focus {
+    background: rgba(12, 233, 139, 0.3) !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Item seleccionado */
+.bootstrap-select .dropdown-menu li.selected a,
+.bootstrap-select .dropdown-menu li.active a {
+    background: rgba(12, 233, 139, 0.5) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Texto seleccionado */
+.bootstrap-select .dropdown-menu li.selected a .text,
+.bootstrap-select .dropdown-menu li.active a .text {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* 3. CORRECCIONES PARA SELECT NATIVOS */
+select.form-control {
+    background: rgba(0, 31, 63, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    padding: 8px 12px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+select.form-control:focus {
+    background: rgba(12, 233, 139, 0.2) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 15px rgba(12, 233, 139, 0.4) !important;
+    color: #ffffff !important;
+}
+
+/* Opciones de select nativo */
+select.form-control option {
+    background: #001f3f !important;
+    color: #ffffff !important;
+    padding: 8px !important;
+    font-weight: 500 !important;
+}
+
+/* 4. CORRECCIONES PARA SELECTPICKER */
+.selectpicker {
+    background: rgba(0, 31, 63, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+}
+
+/* 5. CORRECCIONES PARA CONTENEDORES */
+.form-group .bootstrap-select {
+    display: block !important;
+    width: 100% !important;
+}
+
+/* 6. SCROLLBAR PERSONALIZADO PARA DROPDOWN */
+.bootstrap-select .dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bootstrap-select .dropdown-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.bootstrap-select .dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(12, 233, 139, 0.6);
+    border-radius: 3px;
+}
+
+.bootstrap-select .dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(12, 233, 139, 0.8);
+}
+
+/* 7. CORRECCIONES ESPECÍFICAS PARA FIREFOX */
+@-moz-document url-prefix() {
+    .bootstrap-select .dropdown-toggle {
+        background: rgba(0, 31, 63, 0.95) !important;
+    }
+    
+    .bootstrap-select .dropdown-menu {
+        background: rgba(0, 31, 63, 0.98) !important;
+    }
+}
+
+/* 8. CORRECCIONES PARA TEXTOS ESPECIALES */
+.bootstrap-select .bs-searchbox input {
+    background: rgba(0, 31, 63, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    padding: 6px 10px !important;
+    border-radius: 8px !important;
+}
+
+.bootstrap-select .bs-searchbox input::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 9. CORRECCIONES PARA MÚLTIPLE SELECCIÓN */
+.bootstrap-select[multiple] .dropdown-menu li.selected a span.check-mark {
+    color: var(--primary-green) !important;
+}
+
+/* 10. CORRECCIONES PARA ESTADOS DISABLED */
+.bootstrap-select.disabled .dropdown-toggle,
+.bootstrap-select .dropdown-toggle[disabled] {
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    cursor: not-allowed !important;
+}
+
+/* 11. CORRECCIONES RESPONSIVAS */
+@media (max-width: 768px) {
+    .bootstrap-select .dropdown-menu {
+        max-height: 200px !important;
+        font-size: 14px !important;
+    }
+    
+    .bootstrap-select .dropdown-menu li a {
+        padding: 8px 12px !important;
+    }
+    
+    .bootstrap-select .dropdown-toggle {
+        font-size: 14px !important;
+    }
+}
+
+/* 12. CORRECCIONES PARA MODO ALTO CONTRASTE */
+@media (prefers-contrast: high) {
+    .bootstrap-select .dropdown-toggle {
+        background: #000000 !important;
+        border: 3px solid #ffffff !important;
+        color: #ffffff !important;
+    }
+    
+    .bootstrap-select .dropdown-menu {
+        background: #000000 !important;
+        border: 3px solid #ffffff !important;
+    }
+    
+    .bootstrap-select .dropdown-menu li a {
+        color: #ffffff !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+}
+
+/* 13. ASEGURAR Z-INDEX CORRECTO */
+.bootstrap-select.open {
+    z-index: 1051 !important;
+}
+
+.bootstrap-select .dropdown-menu {
+    z-index: 1052 !important;
+}
+
+/* 14. CORRECCIONES PARA ANIMACIONES */
+.bootstrap-select .dropdown-menu {
+    animation: dropdownSlideIn 0.2s ease-out !important;
+}
+
+@keyframes dropdownSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 15. CORRECCIÓN PARA PREVENIR DESBORDAMIENTO */
+.form-group {
+    position: relative !important;
+    z-index: auto !important;
+}
+
+.bootstrap-select {
+    z-index: auto !important;
+}
+
+/* Cuando está abierto, aumentar z-index del contenedor padre */
+.form-group:has(.bootstrap-select.open) {
+    z-index: 1053 !important;
+}
+
+/* Fallback para navegadores que no soportan :has() */
+.form-group.select-open {
+    z-index: 1053 !important;
+}
+
+/* 16. CORRECCIONES ADICIONALES PARA LEGIBILIDAD */
+.bootstrap-select .filter-option,
+.bootstrap-select .dropdown-menu li a {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    letter-spacing: 0.025em !important;
+}
+
+/* 17. CORRECCIÓN PARA TEXTOS QUE SE CORTAN */
+.bootstrap-select .dropdown-toggle .filter-option {
+    max-width: calc(100% - 20px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* 18. MEJORAS FINALES DE CONTRASTE */
+.bootstrap-select .dropdown-menu li small {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.bootstrap-select .dropdown-header {
+    color: var(--primary-green) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 19. CORRECCIÓN PARA MÚLTIPLES SELECTS EN LA MISMA FILA */
+.row .form-group .bootstrap-select {
+    margin-bottom: 0 !important;
+}
+
+/* 20. ESTADO DE CARGA */
+.bootstrap-select.loading .dropdown-toggle::after {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid transparent;
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+/* ===== ESTILOS ESPECÍFICOS PARA PÁGINA DE ROLES (roles.php) ===== */
+
+/* 1. LAYOUT ESPECÍFICO PARA PANEL DE PERMISOS */
+.panel-permisos {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    margin: 1rem 0 !important;
+    box-shadow: var(--shadow-glow) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.panel-permisos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--primary-green), 
+        var(--primary-gold), 
+        var(--primary-green)
+    );
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+/* 2. ESTILOS PARA LAS COLUMNAS DE PERMISOS */
+.panel-permisos .form-group[style*="border-left-style"] {
+    /*background: rgba(255, 255, 255, 0.03) !important;*/
+    border-left: 4px solid var(--primary-red) !important;
+    /*border-radius: 0 15px 15px 0 !important;*/
+    padding: 1.5rem !important;
+    /*margin-left: 1rem !important;*/
+    /*backdrop-filter: blur(10px) !important;*/
+    /*box-shadow: inset 0 0 20px rgba(176, 41, 28, 0.2) !important;*/
+}
+
+/* 3. MEJORAS PARA LOS LABELS PRINCIPALES */
+.panel-permisos label[style*="font-size:20px"] {
+    color: var(--text-primary) !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    margin-bottom: 1rem !important;
+    position: relative !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.panel-permisos label[style*="font-size:20px"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-gold));
+    border-radius: 1px;
+}
+
+/* 4. ESTILOS PARA LA DESCRIPCIÓN DE TIPOS DE ACCESO */
+.panel-permisos p[style*="color:white"] {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 15px !important;
+    padding: 1.5rem !important;
+    margin: 1rem 0 !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.panel-permisos p[style*="color:white"] b {
+    color: var(--text-primary) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+.panel-permisos p[style*="color:white"] b[style*="color:yellow"] {
+    color: var(--primary-gold) !important;
+    text-shadow: 0 2px 6px rgba(204, 142, 0, 0.5) !important;
+    font-weight: 700 !important;
+}
+
+.panel-permisos p[style*="color:white"] ol {
+    margin-top: 1rem !important;
+    padding-left: 1.5rem !important;
+}
+
+.panel-permisos p[style*="color:white"] li {
+    color: var(--text-secondary) !important;
+    margin-bottom: 0.8rem !important;
+    line-height: 1.6 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 5. MEJORAS PARA LOS SELECT ESPECÍFICOS DE ESTA PÁGINA */
+#permiso,
+#permisoareares {
+    background: rgba(0, 31, 63, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    padding: 10px 15px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    min-height: 42px !important;
+}
+
+#permiso:focus,
+#permisoareares:focus {
+    background: rgba(12, 233, 139, 0.2) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 20px rgba(12, 233, 139, 0.4) !important;
+    color: #ffffff !important;
+}
+
+/* 6. ESTILOS PARA LAS LISTAS DE PERMISOS Y ACCIONES */
+
+/* Scrollbar para las listas de permisos */
+#acceso::-webkit-scrollbar,
+#accesoacciones::-webkit-scrollbar {
+    width: 8px;
+}
+
+#acceso::-webkit-scrollbar-track,
+#accesoacciones::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+#acceso::-webkit-scrollbar-thumb,
+#accesoacciones::-webkit-scrollbar-thumb {
+    background: rgba(12, 233, 139, 0.6);
+    border-radius: 4px;
+}
+
+#acceso::-webkit-scrollbar-thumb:hover,
+#accesoacciones::-webkit-scrollbar-thumb:hover {
+    background: rgba(12, 233, 139, 0.8);
+}
+
+/* 7. ESTILOS PARA CHECKBOXES DENTRO DE LAS LISTAS */
+#acceso input[type="checkbox"],
+#accesoacciones input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 0.5rem !important;
+    accent-color: var(--primary-green) !important;
+    transform: scale(1.2) !important;
+    cursor: pointer !important;
+}
+
+#acceso label,
+#accesoacciones label {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+    margin-left: 0.5rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.5rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+#acceso label:hover,
+#accesoacciones label:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: translateX(3px) !important;
+}
+
+/* 8. ESTILOS PARA LOS ITEMS DE LISTA */
+#acceso li,
+#accesoacciones li {
+    list-style: none !important;
+    margin-bottom: 0.8rem !important;
+    padding: 0.5rem !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid transparent !important;
+}
+
+#acceso li:hover,
+#accesoacciones li:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.02) !important;
+}
+
+/* 9. MEJORAS PARA LOS HR (SEPARADORES) */
+.panel-permisos hr {
+    border: 0 !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent) !important;
+    margin: 1.5rem 0 !important;
+    opacity: 0.6 !important;
+}
+
+/* 10. MEJORAS PARA LOS PÁRRAFOS DESCRIPTIVOS */
+.panel-permisos p:not([style*="color:white"]) {
+    color: var(--text-secondary) !important;
+    font-style: italic !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+    margin-bottom: 1rem !important;
+}
+
+.panel-permisos p:not([style*="color:white"]) i {
+    color: var(--text-secondary) !important;
+}
+
+/* 11. MEJORAS PARA INPUTS HIDDEN Y TEXT */
+.panel-permisos input[type="text"] {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    padding: 10px 15px !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.panel-permisos input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 20px rgba(12, 233, 139, 0.3) !important;
+    color: var(--text-primary) !important;
+    transform: scale(1.02) !important;
+}
+
+.panel-permisos input[type="text"]::placeholder {
+    color: var(--text-muted) !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+}
+
+/* 12. MEJORAS ESPECÍFICAS PARA LOS BOTONES */
+.panel-permisos #btnGuardar {
+    background: linear-gradient(135deg, var(--primary-green), rgba(12, 233, 139, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+    color: var(--white) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2.5rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(12, 233, 139, 0.3) !important;
+    margin-right: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.panel-permisos #btnGuardar:hover {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-green)) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(12, 233, 139, 0.5) !important;
+}
+
+.panel-permisos #btnCancelar {
+    background: rgba(176, 41, 28, 0.8) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+    color: var(--white) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2.5rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.panel-permisos #btnCancelar:hover {
+    background: rgba(176, 41, 28, 1) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(176, 41, 28, 0.5) !important;
+}
+
+/* 13. ANIMACIONES ESPECÍFICAS PARA LA PÁGINA */
+.panel-permisos {
+    animation: slideUpPermissions 0.8s ease-out !important;
+}
+
+@keyframes slideUpPermissions {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animación escalonada para las columnas */
+.panel-permisos .form-group:nth-child(1) {
+    animation: slideInLeft 0.6s ease-out 0.2s both;
+}
+
+.panel-permisos .form-group:nth-child(2) {
+    animation: slideInUp 0.6s ease-out 0.4s both;
+}
+
+.panel-permisos .form-group:nth-child(3) {
+    animation: slideInRight 0.6s ease-out 0.6s both;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 14. RESPONSIVO ESPECÍFICO PARA LA PÁGINA DE ROLES */
+@media (max-width: 992px) {
+    .panel-permisos .form-group[style*="border-left-style"] {
+        border-left: none !important;
+        border-top: 4px solid var(--primary-red) !important;
+        margin-left: 0 !important;
+        margin-top: 1rem !important;
+        border-radius: 15px !important;
+    }
+    
+    .panel-permisos {
+        padding: 1.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel-permisos label[style*="font-size:20px"] {
+        font-size: 1.2rem !important;
+    }
+    
+    #acceso,
+    #accesoacciones {
+        min-height: 200px !important;
+        max-height: 300px !important;
+    }
+    
+    .panel-permisos #btnGuardar,
+    .panel-permisos #btnCancelar {
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+        margin-right: 0 !important;
+        padding: 1rem !important;
+    }
+}
+
+/* 15. MEJORAS PARA ACCESIBILIDAD */
+.panel-permisos input[type="checkbox"]:focus {
+    outline: 3px solid var(--primary-green) !important;
+    outline-offset: 2px !important;
+}
+
+.panel-permisos label:focus-within {
+    background: rgba(12, 233, 139, 0.2) !important;
+    outline: 2px solid var(--primary-green) !important;
+    outline-offset: 2px !important;
+}
+
+/* 16. ESTADO DE CARGA PARA LISTAS DINÁMICAS */
+#acceso.loading,
+#accesoacciones.loading {
+    position: relative !important;
+}
+
+#acceso.loading::after,
+#accesoacciones.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--primary-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 17. MEJORAS PARA MODO OSCURO */
+@media (prefers-color-scheme: dark) {
+    .panel-permisos {
+        box-shadow: 
+            var(--shadow-glow),
+            0 10px 40px rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+/* 18. REDUCIR MOVIMIENTO PARA ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+    .panel-permisos,
+    .panel-permisos .form-group,
+    .panel-permisos input,
+    .panel-permisos button,
+    #acceso li,
+    #accesoacciones li {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .panel-permisos button:hover,
+    .panel-permisos input:focus,
+    #acceso li:hover,
+    #accesoacciones li:hover {
+        transform: none !important;
+    }
+}
+
+/*RADIO BUTTOM*/
+
+.precio label {
+    margin: 0;
+    padding: 5px;
+    font-weight: normal;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.precio label:hover {
+    background-color: #f0f0f0;
+}
+
+.precio input[type="radio"]:checked + span,
+.precio label:has(input[type="radio"]:checked) {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    font-weight: bold;
+    color: #155724;
+}
+
+/* Estilo para inputs deshabilitados */
+.cantidad:disabled {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Mejorar la apariencia de la tabla */
+#tablaInsumos th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#tablaInsumos td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+#tablaInsumos .precio {
+    text-align: left;
+    padding: 8px;
+}
+
+#tablaInsumos .total {
+    font-weight: bold;
+    color: #28a745;
+}

@@ -1,0 +1,78 @@
+/* Sobrescribir colores de botones Bootstrap */
+.btn-primary {
+    background-color: #B0291C !important;
+    border-color: #8F2116 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #8F2116 !important;
+    border-color: #6E1A11 !important;
+}
+
+.btn-info {
+    background-color: #B0291C !important;
+    border-color: #8F2116 !important;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+    background-color: #8F2116 !important;
+    border-color: #6E1A11 !important;
+}
+
+/* Links en breadcrumb */
+.breadcrumb a {
+    color: #B0291C !important;
+}
+
+.breadcrumb a:hover {
+    color: #8F2116 !important;
+}
+
+/* Otros elementos que puedan tener azul */
+a {
+    color: #B0291C !important;
+}
+
+a:hover {
+    color: #8F2116 !important;
+}
+
+/* Select picker y elementos activos */
+.bootstrap-select .dropdown-menu li.selected a,
+.bootstrap-select .dropdown-menu li.active a {
+    background-color: #B0291C !important;
+}
+
+/* DataTables elementos activos */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #B0291C !important;
+    border-color: #B0291C !important;
+}
+
+/* AdminLTE sidebar y elementos */
+.skin-blue .main-header .navbar {
+    background-color: #B0291C !important;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #8F2116 !important;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color: #6E1A11 !important;
+}
+
+.skin-blue .sidebar-menu > li.active > a {
+    border-left-color: #B0291C !important;
+}
+
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a {
+    color: #fff !important;
+    background: #B0291C !important;
+}

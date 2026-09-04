@@ -1,0 +1,43 @@
+# ============================================
+# COTIZADOR FEPADE
+# ============================================
+
+# Configuraciones sensibles
+config/global.php
+config/EmailHelper.php
+
+# Archivos cargados por usuarios
+files/
+
+# Logs
+error_log
+*/error_log
+*.log
+
+# Backups
+*.zip
+*.tar
+*.tar.gz
+*.bak
+*.backup
+*.sql.gz
+
+# Dumps específicos
+/cotizador_db_dev.sql
+
+# cPanel / FTP
+.ftpquota
+
+# Temporales
+*.tmp
+*.temp
+*.swp
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
