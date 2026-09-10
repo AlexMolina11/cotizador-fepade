@@ -19,8 +19,8 @@ $idusuario=isset($_POST["idusuario"])?limpiarCadena($_POST["idusuario"]):"";
 $passw=isset($_POST["passw"])?limpiarCadena($_POST["passw"]):"";
 /**para usuario propietario */
 $ipusu = $_SERVER["REMOTE_ADDR"];
-$regusu = $_SESSION["login"];
-$modusu = $_SESSION["login"];
+$regusu = $_SESSION["login"] ?? "";
+$modusu = $_SESSION["login"] ?? "";
 
 //validando Acción Editar
 if(isset($_SESSION["093EDI33"])&&$_SESSION["093EDI33"]==1){
@@ -128,25 +128,6 @@ switch ($_GET["op"]) {
             $opciones.= '<option value='.$reg->IDROL.'>'.$reg->NOMBREROL.'</option>';
         }
         echo $opciones;
-    break;
-
-    case 'permisos':
-        $rspta=$usuario->permisolista();
-        //Obtener los permisos asignados al usuario 
-        $id=$_GET['id'];
-        $marcados=$usuario->listarmarcados($id);
-        //Declaramos un array para alamacenar los permisos marcados
-        $valores=array();
-        
-        //Almacenar los permisos asignados al usario en el array
-        while ($per=$marcados->fetch_object()){
-            array_push($valores, $per->IDMODULO);
-        }
-        //Mostramos la lista de permisos en la vista y si están o no marcados
-        while ($reg = $rspta->fetch_object()) {
-            $sw= in_array($reg->IDMODULO, $valores)?'checked':'';
-            echo "<li><input type='checkbox' ".$sw." name='acceso[]' value='".$reg->IDMODULO."'>".$reg->NOMBREMOD."</li>";
-        }
     break;
     
     case 'verificar':

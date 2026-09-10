@@ -1204,7 +1204,7 @@ foreach ($estados as $e) {
                     <a 
                         href="cotizacion.php?buscar=<?= urlencode($estado['NOMBREESTADOCOT']) ?>"
                         class="menu-card"
-                        title="Ver cotizaciones: <?= $estado['NOMBREESTCOT'] ?>"
+                        title="Ver cotizaciones: <?= $estado['NOMBREESTADOCOT'] ?>"
                     >
                         <div class="menu-card-content">
                             <div class="menu-icon">
