@@ -19,12 +19,6 @@ function init() {
         $("#idrol").selectpicker('refresh');
     });
 
-
-    //Mostrar los permisos
-    $.post("../ajax/usuario.php?op=permisos&id=", function(r) {
-        $("#acceso").html(r);
-    });
-
     //Cargamos los items al select Organización Ejecutora
     $.post("../ajax/usuario.php?op=selectOrganizacionEjecutora", function(r) {
         $("#orgejecutora").html(r);
