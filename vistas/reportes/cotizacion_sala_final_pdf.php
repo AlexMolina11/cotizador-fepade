@@ -689,10 +689,6 @@ ob_start();
 
                     <ul style="margin-left: 20px; font-size: 9pt; line-height: 1.8;">
 
-                        <li>Estación de agua y café permanente.</li>
-
-                        <li>Uso de Jardines para Actividades de Grupo.</li>
-
                         <li>Montaje de Sala.</li>
 
                         <li>Aire Acondicionado.</li>
@@ -701,7 +697,7 @@ ob_start();
 
                         <li>1 rotafolio, espacio para proyectar, pizarra, plumones y 1 regleta con extensión para conexiones.</li>
 
-                        <li>Servicio de café, té y agua disponible fuera del salón. En FEPADE estamos comprometidos con el cuidado del medio ambiente, por lo que hemos reducido el uso de productos desechables. Agradecemos de antemano invitar a los asistentes a su evento a traer su propio termo o taza reutilizable.</li>
+                        <li>Servicio de café y agua disponible fuera del salón. En FEPADE estamos comprometidos con el cuidado del medio ambiente, por lo que hemos reducido el uso de productos desechables. Agradecemos de antemano invitar a los asistentes a su evento a traer su propio termo o taza reutilizable.</li>
 
                         <li><u><b>Internet inalámbrico hasta 15 Mbps de cortesía.</b></u></li>
 
