@@ -213,6 +213,24 @@ desired effect
             </li>
         <?php } else { } ?>
 
+        <?php if(isset($_SESSION["047INS"])&&$_SESSION["047INS"]==1){ ?>
+            <li class="treeview">
+              <a href="#"><img src="../public/iconos/participe.png" alt="Insumos" style="width: 16px; height: 16px;"> <span>Insumos</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+              </a>
+              <ul class="treeview-menu">
+                <?php if($_SESSION['048GES'] == 1){ ?> 
+                  <li><a href="insumo.php"><i class="fa fa-circle-o"></i>Gestión de Insumos</a></li>
+                <?php } else { } ?> 
+                <?php if($_SESSION['049TIP'] == 1){ ?> 
+                  <li><a href="tipoinsumo.php"><i class="fa fa-circle-o"></i>Tipo de Insumos</a></li>
+                <?php } else { } ?> 
+              </ul>
+            </li>
+        <?php } else { } ?>
+
         <?php if(isset($_SESSION["041DAS"])&&$_SESSION["041DAS"]==1){ ?>
             <li class="treeview">
               <a href="dashboards.php">

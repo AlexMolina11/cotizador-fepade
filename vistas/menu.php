@@ -1077,6 +1077,34 @@ foreach ($estados as $e) {
 
                 <?php } else { } ?>
 
+                <!-- Insumos -->
+
+                <?php if(isset($_SESSION["047INS"])&&$_SESSION["047INS"]==1){ ?>
+
+                <a href="insumos.php" class="menu-card">
+
+                    <div class="menu-card-content" style="background-color: black;">
+
+                        <div class="menu-icon">
+
+                            <img src="../public/iconos/participe.png" alt="Insumos">
+
+                        </div>
+
+                        <div class="menu-text">
+
+                            <h3 class="menu-title">Insumos</h3>
+
+                            <p class="menu-description">Gestión de insumos de eventos.</p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+                <?php } else { } ?>
+
 
 
                 <!-- Catálogos -->
