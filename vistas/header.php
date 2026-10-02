@@ -222,7 +222,7 @@ desired effect
               </a>
               <ul class="treeview-menu">
                 <?php if($_SESSION['048GES'] == 1){ ?> 
-                  <li><a href="insumo.php"><i class="fa fa-circle-o"></i>Gestión de Insumos</a></li>
+                  <li><a href="gestioninsumo.php"><i class="fa fa-circle-o"></i>Gestión de Insumos</a></li>
                 <?php } else { } ?> 
                 <?php if($_SESSION['049TIP'] == 1){ ?> 
                   <li><a href="tipoinsumo.php"><i class="fa fa-circle-o"></i>Tipo de Insumos</a></li>

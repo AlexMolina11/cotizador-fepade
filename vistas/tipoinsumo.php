@@ -65,9 +65,9 @@ if(isset($_SESSION['049TIP']) && $_SESSION['049TIP']==1){
 						<form name="formulario" id="formulario" method="POST">
 						    
 							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<label>Nombre Insumo(*):</label>
+								<label>Nombre Tipo Insumo(*):</label>
 								<input type="hidden" id="codigotipoinsumo" name="codigotipoinsumo">
-								<input type="text" class="form-control" id="nombretipoinsumo" name="nombretipoinsumo" maxlength="255" placeholder="Nombre de Insumo" title="Ingrese el nombre" required>
+								<input type="text" class="form-control" id="nombretipoinsumo" name="nombretipoinsumo" maxlength="255" placeholder="Nombre del tipo de Insumo" title="Ingrese el nombre" required>
 							</div>
 							
 							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

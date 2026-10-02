@@ -27,7 +27,7 @@ if(isset($_SESSION['047INS']) && $_SESSION['047INS']==1){
 						   
                 <ul class="list-group">
                     <?php if($_SESSION['048GES']==1){ ?>
-                        <li class="list-group-item" style="font-size: 20px;"><a href="gestioninsumos.php"><i class="fa fa-list-alt"></i> Gestion de insumo</a> <i class="fa fa-long-arrow-right"></i> Registro de todos los insumos que requieran las cotizaciones.</li>
+                        <li class="list-group-item" style="font-size: 20px;"><a href="gestioninsumo.php"><i class="fa fa-list-alt"></i> Gestion de insumo</a> <i class="fa fa-long-arrow-right"></i> Registro de todos los insumos que requieran las cotizaciones.</li>
                     <?php } else { } ?>
                     <?php if($_SESSION['049TIP']==1){ ?>
                         <li class="list-group-item" style="font-size: 20px;"><a href="tipoinsumo.php"><i class="fa fa-file-text-o"></i> Tipos de insumo</a> <i class="fa fa-long-arrow-right"></i> Registro de todos los tipos de insumos.</li>
