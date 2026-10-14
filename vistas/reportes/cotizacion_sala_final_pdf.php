@@ -84,17 +84,13 @@ if ($idcotizacion != '') {
                 SELECT 
 
                     di.IDDETALLEINSUMO,
-
                     di.CANTIDAD,
-
                     di.PRECIO,
-
                     di.TOTAL,
-
+                    i.NOMBREINSUMO,
                     i.ALIASINSUMO,
-
                     i.DESCRIPCIONINS,
-
+                    i.MOSTRAR_CANTIDAD,
                     ti.NOMBRETIPOINSUMO
 
                 FROM cot_detalle_insumos di
@@ -329,6 +325,20 @@ if ($bannerPath === false || !is_readable($bannerPath)) {
 $bannerBase64 = 'data:image/png;base64,' .
     base64_encode(file_get_contents($bannerPath));
 
+
+/* Icono para inversión total */
+$iconoMonedasPath = realpath(
+    __DIR__ . '/../../public/images/icons/monedas_blanco.png'
+);
+
+$iconoMonedasBase64 = '';
+
+if ($iconoMonedasPath !== false && is_readable($iconoMonedasPath)) {
+    $iconoMonedasBase64 = 'data:image/png;base64,' .
+        base64_encode(file_get_contents($iconoMonedasPath));
+}
+
+
 ob_start();
 ?>
 
@@ -459,6 +469,191 @@ ob_start();
             margin: 0;
             padding: 0;
         }
+
+        /* NUEVO RESUMEN DE COTIZACION DE SALAS */
+
+        .salas-resumen {
+            margin-top: 12px;
+            margin-bottom: 22px;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .salas-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-size: 8.5pt;
+            color: #202020;
+        }
+
+        .salas-tabla th {
+            background: #f8f8f8;
+            color: #242424;
+            text-align: left;
+            font-size: 8pt;
+            font-weight: bold;
+            padding: 10px 8px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .salas-tabla td {
+            padding: 10px 8px;
+            vertical-align: top;
+            border-bottom: 1px solid #e5e5e5;
+            line-height: 1.45;
+        }
+        
+        .salas-tabla .col-fecha {
+            width: 32%;
+        }
+
+        .salas-tabla .col-item {
+            width: 68%;
+        }
+
+        .salas-fecha {
+            font-weight: bold;
+        }
+
+        .salas-personas {
+            margin-top: 5px;
+        }
+
+        .salas-duracion {
+            margin-top: 2px;
+            font-size: 8.5pt;
+            line-height: 1.35;
+        }
+
+        .salas-precio-persona {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .salas-item {
+            margin-bottom: 6px;
+            padding-left: 9px;
+            text-indent: -9px;
+        }
+
+        .salas-item-descripcion {
+            margin-left: 9px;
+            font-size: 7.5pt;
+            color: #666666;
+            text-indent: 0;
+        }
+
+        .salas-cantidad-item {
+            margin-bottom: 6px;
+        }
+        
+        /* INVERSIÓN TOTAL - BARRA COMPACTA */
+        .salas-inversion {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            table-layout: fixed;
+            background-color: #AA1D20;
+            margin: 10px 0 0;
+            padding: 0;
+            page-break-inside: avoid;
+        }
+
+        .salas-inversion td {
+            background: transparent;
+            border: none !important;
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        /* Ícono y título juntos */
+        .salas-inversion .salas-inversion-izquierda {
+            width: 65%;
+            text-align: left;
+        }
+
+        .salas-inversion-icono {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .salas-inversion-titulo {
+            display: inline-block;
+            vertical-align: middle;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 13pt;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        /* Monto alineado a la derecha */
+        .salas-inversion .salas-inversion-derecha {
+            width: 35%;
+            text-align: right;
+            padding: 10px 12px;
+        }
+
+        .salas-inversion-monto-contenido {
+            border-left: 1px solid #D99A9A;
+            padding-left: 15px;
+        }
+
+        .salas-inversion-monto {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 17pt;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .salas-inversion-iva {
+            margin-top: 2px;
+            font-size: 7pt;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: right;
+        }
+
+        /* NOTAS IMPORTANTES */
+        .salas-notas {
+            background-color: #f7f7f7;
+            padding: 12px 14px 14px;
+            margin-top: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 8pt;
+            page-break-inside: avoid !important;
+        }
+
+        .salas-notas-titulo {
+            color: #aa1d20;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-bottom: 6px;
+            page-break-after: avoid;
+        }
+
+        .salas-notas ul {
+            margin: 0;
+            padding: 0 0 0 14px;
+            line-height: 1.3;
+            list-style-type: disc;
+        }
+
+        .salas-notas li {
+            margin: 0;
+            padding: 0;
+            line-height: 1.3;
+            page-break-inside: avoid;
+        }
+
+        .salas-cierre {
+            page-break-inside: avoid !important;
+        }
+
     </style>
 </head>
 
@@ -490,211 +685,269 @@ ob_start();
 
             <!-- Destinatario -->
 
-            <div class="section">
+            <div class="section" style="margin-top: -20px;">
 
                 <p><strong>Señores</strong></p>
-
                 <p><strong><?= htmlspecialchars($cotizacion['EMPRESA']) ?></strong></p>
-
                 <p>Presente. Con atención a: <strong><?= htmlspecialchars($cotizacion['NOMBRECONTACTO']) ?></strong></p>
-
                 <br>
 
                 <p>Estimados Señores:</p>
-
                 <p>Atentamente, presentamos para su consideración nuestra oferta de alquiler de sala, para la realización de su evento <strong><?= htmlspecialchars($cotizacion['NOMBRETIPOEVENTO']) ?></strong> <?= !empty($cotizacion['DESCRIPCIONCOT']) ? '(' . htmlspecialchars($cotizacion['DESCRIPCIONCOT']) . ')' : '' ?> <?= obtenerRangoFechas($detalles_por_fecha) ?> con los siguientes horarios según detalle:</p>
 
             </div>
 
             <!-- USO DE SALA -->
+            <div class="section-cotizacion" style="margin-top: -20px;">
 
-            <div class="section-cotizacion">
-
-                <?php 
-
-                $total_general = 0;
-
-                foreach ($detalles_por_fecha as $fecha => $detalles): 
-
-                    $subtotal_fecha = 0;
-
+                <?php
+                // Se utilizan los totales ya preparados en la consulta.
+                // Para cotizaciones exentas, la consulta ya ajustó los
+                // importes antes de construir $detalles_por_fecha.
+                $total_general = calcularTotalGeneral($detalles_por_fecha);
                 ?>
 
-                    <div class="fecha-header">
+                <div class="salas-resumen">
 
-                        Fecha: <?= formatDate($fecha) ?>
-
-                    </div>
-
-
-
-                    <?php foreach ($detalles as $detalle): ?>
-
-                        <?php if (!empty($detalle['HORAINICOT']) || !empty($detalle['HORAFINCOT'])): ?>
-
-                        <div class="horario-info">
-
-                            <strong>Horario:</strong> <?= formatTime($detalle['HORAINICOT']) ?> a <?= formatTime($detalle['HORAFINCOT']) ?>
-
-                            <?php if (!empty($detalle['DURACIONCOT'])): ?>
-
-                                (<?= htmlspecialchars($detalle['DURACIONCOT']) ?>)
-
-                            <?php endif; ?>
-
-                            <?php if (!empty($detalle['DESCRIPCIONDETALLE'])): ?>
-
-                                - <?= htmlspecialchars($detalle['DESCRIPCIONDETALLE']) ?>
-
-                            <?php endif; ?>
-
-                        </div>
-
-                        <?php endif; ?>
+                    <table class="salas-tabla">
+                        
+                        <thead>
+                            <tr>
+                                <th class="col-fecha">FECHA / HORARIO</th>
+                                <th class="col-item">ÍTEM</th>
+                            </tr>
+                        </thead>
 
 
+                        <tbody>
+                            <?php foreach ($detalles_por_fecha as $fecha => $detalles): ?>
 
-                        <?php if (!empty($detalle['insumos'])): ?>
+                                <?php foreach ($detalles as $detalle): ?>
 
-                        <div class="table-container">
+                                    <?php
+                                    $cantidadPersonas = (int) (
+                                        $detalle['CANTIDADCOT'] ?? 0
+                                    );
 
-                            <table>
+                                    $totalDetalle = 0.0;
 
-                                <thead>
+                                    foreach ($detalle['insumos'] ?? [] as $insumo) {
+                                        $totalDetalle += (float) (
+                                            $insumo['TOTAL'] ?? 0
+                                        );
+                                    }
 
-                                    <tr>
-
-                                        <th>DESCRIPCIÓN</th>
-
-                                        <th style="text-align: center; width: 100px;">PRECIO UNITARIO</th>
-
-                                        <th style="text-align: center; width: 100px;">CANTIDAD</th>
-
-                                        <th style="text-align: right; width: 120px;">COSTO TOTAL</th>
-
-                                    </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                    <?php 
-
-                                    $subtotal_detalle = 0;
-
-                                    foreach ($detalle['insumos'] as $insumo): 
-
-                                        $subtotal_detalle += $insumo['TOTAL'] ?? 0;
-
+                                    $precioPorPersona = $cantidadPersonas > 0
+                                        ? $totalDetalle / $cantidadPersonas
+                                        : null;
                                     ?>
 
                                     <tr>
+                                        <!-- FECHA / HORARIO -->
+                                        <td class="col-fecha">
 
-                                        <td>
+                                            <div class="salas-fecha">
+                                                <?= htmlspecialchars(formatDate($fecha)) ?>
+                                            </div>
+                                            
+                                            <div>
+                                                <strong>Horario:</strong>
+                                                <?= htmlspecialchars(
+                                                    formatTime($detalle['HORAINICOT'] ?? null)
+                                                ) ?>
+                                                a
+                                                <?= htmlspecialchars(
+                                                    formatTime($detalle['HORAFINCOT'] ?? null)
+                                                ) ?>
+                                            </div>
 
-                                            <strong><?= htmlspecialchars($insumo['ALIASINSUMO']) ?></strong>
+                                            <?php if (!empty($detalle['DURACIONCOT'])): ?>
+                                                <div class="salas-duracion">
+                                                    <strong>Duración:</strong>
+                                                    <?= htmlspecialchars(
+                                                        (string) $detalle['DURACIONCOT'],
+                                                        ENT_QUOTES,
+                                                        'UTF-8'
+                                                    ) ?>
+                                                </div>
+                                            <?php endif; ?>
 
-                                            <?php if (!empty($insumo['DESCRIPCIONINS'])): ?>
 
-                                                <br><small style="color: #666;"><?= htmlspecialchars($insumo['DESCRIPCIONINS']) ?></small>
+                                            <div class="salas-personas">
+                                                <?= $cantidadPersonas ?>
+                                                <?= $cantidadPersonas === 1
+                                                    ? 'persona'
+                                                    : 'personas' ?>
+                                            </div>
+
+                                            <div class="salas-precio-persona">
+                                                <?php if ($precioPorPersona !== null): ?>
+                                                    <?= formatPrice($precioPorPersona) ?>
+                                                    por persona
+                                                <?php else: ?>
+                                                    Precio por persona: No aplica
+                                                <?php endif; ?>
+                                            </div>
+
+                                        </td>
+
+                                        <!-- ÍTEMS -->
+                                        <td class="col-item">
+
+                                            <?php if (!empty($detalle['insumos'])): ?>
+
+                                                <?php foreach ($detalle['insumos'] as $insumo): ?>
+
+                                                    <?php
+                                                    $nombreInsumo = trim((string) (
+                                                        $insumo['ALIASINSUMO'] ?? ''
+                                                    ));
+
+                                                    if ($nombreInsumo === '') {
+                                                        $nombreInsumo = trim((string) (
+                                                            $insumo['NOMBREINSUMO'] ?? ''
+                                                        ));
+                                                    }
+
+                                                    $descripcionInsumo = trim((string) (
+                                                        $insumo['DESCRIPCIONINS'] ?? ''
+                                                    ));
+                                                    ?>
+
+                                                    <div class="salas-item">
+                                                        &bull;
+                                                        <?= htmlspecialchars(
+                                                            $nombreInsumo,
+                                                            ENT_QUOTES,
+                                                            'UTF-8'
+                                                        ) ?>
+
+                                                        <?php if ($descripcionInsumo !== ''): ?>
+                                                            <div class="salas-item-descripcion">
+                                                                <?= nl2br(htmlspecialchars(
+                                                                    $descripcionInsumo,
+                                                                    ENT_QUOTES,
+                                                                    'UTF-8'
+                                                                )) ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+
+                                                <?php endforeach; ?>
+
+                                            <?php else: ?>
+
+                                                <span>Sin insumos registrados</span>
 
                                             <?php endif; ?>
 
                                         </td>
 
-                                        <td style="text-align: center;"><?= formatPrice($insumo['PRECIO']) ?></td>
-
-                                        <td style="text-align: center;"><?= htmlspecialchars($insumo['CANTIDAD']) ?></td>
-
-                                        <td style="text-align: right; font-weight: bold;"><?= formatPrice($insumo['TOTAL']) ?></td>
-
                                     </tr>
 
-                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
 
-                                </tbody>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
 
-                            </table>
+                    <div class="salas-cierre">
+                        
+                        <!-- INVERSIÓN TOTAL -->
+                        <table class="salas-inversion">
+                            <tbody>
+                                <tr>
+                                    <!-- ÍCONO Y TÍTULO -->
+                                    <td class="salas-inversion-izquierda">
 
+                                        <?php if ($iconoMonedasBase64 !== ''): ?>
+                                            <img
+                                                class="salas-inversion-icono"
+                                                src="<?= $iconoMonedasBase64 ?>"
+                                                alt=""
+                                            >
+                                        <?php endif; ?>
+
+                                        <span class="salas-inversion-titulo">
+                                            INVERSIÓN TOTAL
+                                        </span>
+
+                                    </td>
+
+                                    <!-- MONTO TOTAL -->
+                                    <td class="salas-inversion-derecha">
+
+                                        <div class="salas-inversion-monto-contenido">
+
+                                            <div class="salas-inversion-monto">
+                                                <?= formatPrice($total_general) ?>
+                                            </div>
+
+                                            <div class="salas-inversion-iva">
+                                                <?= $exenta
+                                                    ? 'EXENTO DE IVA'
+                                                    : 'IVA INCLUIDO' ?>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div><!-- Fin salas-cierre -->
+
+                    <!-- NOTAS IMPORTANTES -->
+                    <div class="salas-notas">
+
+                        <div class="salas-notas-titulo">
+                            NOTAS IMPORTANTES
                         </div>
 
-                        <?php 
+                        <ul>
+                            <li>
+                                <?= $exenta
+                                    ? 'Esta cotización es exenta de IVA.'
+                                    : 'Precios incluyen IVA.' ?>
+                            </li>
 
-                        $subtotal_fecha += $subtotal_detalle;
+                            <li>
+                                La cotización considera el uso de sala y los
+                                servicios detallados en las fechas y horarios
+                                indicados.
+                            </li>
 
-                        endif; 
+                            <li>
+                                Cualquier servicio adicional no especificado
+                                en esta cotización será cotizado por separado.
+                            </li>
 
-                        ?>
-
-                    <?php endforeach; ?>
-
-
-
-                    <?php if (count($detalles_por_fecha) > 1): ?>
-
-                    <div style="text-align: right; margin: 15px 0; padding: 10px; background: #f5f5f5; font-weight: bold;">
-
-                        SUBTOTAL <?= formatDate($fecha) ?>: <?= formatPrice($subtotal_fecha) ?>
+                            <li>
+                                Sujeto a disponibilidad de espacios.
+                            </li>
+                        </ul>
 
                     </div>
-
-                    <?php $total_general += $subtotal_fecha; endif; ?>
-
-                <?php endforeach; ?>
-
-
-
-                <!-- Total General -->
-
-                <?php if (count($detalles_por_fecha) == 1) {
-
-                    $total_general = calcularTotalGeneral($detalles_por_fecha);
-
-                } ?>
-
-                <div class="table-container">
-
-                    <table>
-
-                        <tfoot>
-
-                            <tr class="total-row">
-
-                                <td colspan="3" style="text-align: right; padding: 15px;"><strong>INVERSIÓN TOTAL</strong></td>
-
-                                <td style="text-align: right; padding: 15px; font-size: 13pt;"><strong><?= formatPrice($total_general) ?></strong></td>
-
-                            </tr>
-
-                        </tfoot>
-
-                    </table>
 
                 </div>
 
-                <?php if ($exenta): ?>
-                    <div class="precio-incluye">
-                        <strong>Esta cotización es exenta de IVA. Todos los precios mostrados ya no incluyen el 13%.</strong>
-                    </div>
-                <?php else: ?>
-                    <div class="precio-incluye">PRECIOS INCLUYEN IVA</div>
-                <?php endif; ?>
-
-                <!-- Nota Inicial -->
-
+                <!-- CONDICIÓN COMERCIAL EXISTENTE -->
                 <div class="section" style="margin-bottom: 30px;">
-
                     <ul style="margin-left: 20px; font-size: 9pt; line-height: 1.8;">
-
-                        <li><i><b>Salas Sujetas a Disponibilidad</b></i></li>
-
-                        <li>En nuestros eventos el <b>rubro de Renta de Sala</b> está directamente vinculado al <b>consumo mínimo requerido</b>, el cual se define en función de la sala solicitada, la duración del evento y el número de asistentes.</li>
-
+                        <li>
+                            En nuestros eventos el
+                            <b>rubro de Renta de Sala</b>
+                            está directamente vinculado al
+                            <b>consumo mínimo requerido</b>,
+                            el cual se define en función de la sala solicitada,
+                            la duración del evento y el número de asistentes.
+                        </li>
                     </ul>
-
                 </div>
 
             </div>
+
 
 
 
