@@ -314,6 +314,21 @@ function obtenerRangoFechas($detalles_por_fecha) {
 /* ===============================
    HTML → BUFFER
    =============================== */
+
+// Banner institucional - Cotización de auditorio
+$bannerPath = realpath(
+    __DIR__ . '/../../public/images/banners/banner_auditorio.png'
+);
+
+if ($bannerPath === false || !is_readable($bannerPath)) {
+    throw new RuntimeException(
+        'No se encontró el banner de cotización de auditorio.'
+    );
+}
+
+$bannerBase64 = 'data:image/png;base64,' .
+    base64_encode(file_get_contents($bannerPath));
+
 ob_start();
 ?>
 
@@ -428,6 +443,22 @@ ob_start();
         .signature-section {
             page-break-inside: avoid;
         }
+
+        /* Banner institucional */
+        .cotizacion-banner {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            line-height: 0;
+        }
+
+        .cotizacion-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 
@@ -435,25 +466,13 @@ ob_start();
 
     <div class="container">
 
-        <!-- Header -->
-
-        <div class="header">
-
-            <img src="/public/images/logosfepade/Logo_FEPADE_horizontal_ISO_Blanco.png" class="header-logo">
-
-            <div class="header-info">
-
-                Calle El Pedregal y Calle de acceso a Escuela Militar Capitán General Gerardo Barrios,<br>
-
-                Antiguo Cuscatlán, La Libertad, El Salvador, C.A.<br>
-
-                Teléfonos: PBX (503) 2212-1600. Cel. (503) <?php echo $telefonoUsuario; ?> Tel. Directo (503) <?php echo $extensionUsuario; ?>
-
-            </div>
-
+        <!-- Banner institucional -->
+        <div class="cotizacion-banner">
+            <img
+                src="<?= $bannerBase64 ?>"
+                alt="Banner institucional FEPADE"
+            >
         </div>
-
-
 
         <!-- Número de Referencia -->
 
@@ -490,8 +509,6 @@ ob_start();
             <!-- USO DE AUDITORIO -->
 
             <div class="section-cotizacion">
-
-                <div class="section-title">USO DE AUDITORIO</div>
 
                 <?php 
 
