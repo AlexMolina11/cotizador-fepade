@@ -526,8 +526,15 @@ ob_start();
         }
 
         .salas-precio-persona {
-            margin-top: 5px;
+            display: inline-block;
+            margin-top: 9px;
+            padding: 5px 8px;
+            background-color: #fceeee;
+            color: #AA1D20;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 10pt;
             font-weight: bold;
+            line-height: 1.3;
         }
 
         .salas-item {
@@ -554,7 +561,7 @@ ob_start();
             border-spacing: 0;
             table-layout: fixed;
             background-color: #AA1D20;
-            margin: 10px 0 0;
+            margin: 8px 0 0;
             padding: 0;
             page-break-inside: avoid;
         }
@@ -562,11 +569,10 @@ ob_start();
         .salas-inversion td {
             background: transparent;
             border: none !important;
-            padding: 12px;
+            padding: 7px 10px;
             vertical-align: middle;
         }
 
-        /* Ícono y título juntos */
         .salas-inversion .salas-inversion-izquierda {
             width: 65%;
             text-align: left;
@@ -574,36 +580,35 @@ ob_start();
 
         .salas-inversion-icono {
             display: inline-block;
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             vertical-align: middle;
-            margin-right: 10px;
+            margin-right: 7px;
         }
 
         .salas-inversion-titulo {
             display: inline-block;
             vertical-align: middle;
             font-family: Helvetica, Arial, sans-serif;
-            font-size: 13pt;
+            font-size: 11pt;
             font-weight: bold;
             color: #FFFFFF;
         }
 
-        /* Monto alineado a la derecha */
         .salas-inversion .salas-inversion-derecha {
             width: 35%;
             text-align: right;
-            padding: 10px 12px;
+            padding: 7px 10px;
         }
 
         .salas-inversion-monto-contenido {
             border-left: 1px solid #D99A9A;
-            padding-left: 15px;
+            padding-left: 12px;
         }
 
         .salas-inversion-monto {
             font-family: Helvetica, Arial, sans-serif;
-            font-size: 17pt;
+            font-size: 15pt;
             font-weight: bold;
             color: #FFFFFF;
             text-align: right;
@@ -611,8 +616,8 @@ ob_start();
         }
 
         .salas-inversion-iva {
-            margin-top: 2px;
-            font-size: 7pt;
+            margin-top: 1px;
+            font-size: 6.5pt;
             font-weight: bold;
             color: #FFFFFF;
             text-align: right;
